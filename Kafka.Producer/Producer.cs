@@ -24,7 +24,7 @@ class Producer
         {
             var numProduced = 0;
             Random rnd = new Random();
-            const int numMessages = 10;
+            const int numMessages = 10000;
             for (int i = 0; i < numMessages; ++i)
             {
                 var user = users[rnd.Next(users.Length)];
@@ -39,7 +39,7 @@ class Producer
                         }
                         else 
                         {
-                            Console.WriteLine($"Produced event to topic {topic}: key = {user,-10} value = {item}");
+                            Console.WriteLine($"{DateTime.UtcNow.ToString("HH:mm:ss:ffff")},,,Produced event to topic {topic}: key = {user,-10} value = {item}");
                             numProduced += 1;
                         }
                     });

@@ -38,7 +38,7 @@ class Consumer
                 while (true) 
                 {
                     var cr = consumer.Consume(cts.Token);
-                    Console.WriteLine($"Consumed event from topic {topic}: key = {cr.Message.Key,-10} value = {cr.Message.Value}");
+                    Console.WriteLine($"{DateTime.UtcNow.ToString("HH:mm:ss:ffff")},,,Consumed event from topic {topic}: key = {cr.Message.Key,-10} value = {cr.Message.Value}");
                 }
             }
             catch (OperationCanceledException) 
