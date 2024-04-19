@@ -24,7 +24,7 @@ class Producer
         {
             var numProduced = 0;
             Random rnd = new Random();
-            const int numMessages = 10000;
+            const int numMessages = 100000;
             for (int i = 0; i < numMessages; ++i)
             {
                 var user = users[rnd.Next(users.Length)];
