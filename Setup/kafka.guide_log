@@ -1,0 +1,35 @@
+
+1./ docker-compose -f single_kafka.yaml up -d
+
+2./ docker exec -it kafka1 /bin/bash
+
+3./ create topic
+[appuser@kafka1 ~]$ kafka-topics --create --bootstrap-server localhost:9092 --topic purchases
+Created topic purchases.
+
+4./ send events at Kafka.Producer
+nhantathanh@DVCSnake Kafka.Producer % dotnet run "$(pwd)/../Setup/bootstrapsv_cfg.properties"
+Produced event to topic purchases: key = jsmith     value = batteries
+Produced event to topic purchases: key = jsmith     value = alarm clock
+Produced event to topic purchases: key = htanaka    value = book
+Produced event to topic purchases: key = sgarcia    value = t-shirts
+Produced event to topic purchases: key = jsmith     value = t-shirts
+Produced event to topic purchases: key = jbernard   value = gift card
+Produced event to topic purchases: key = awalther   value = batteries
+Produced event to topic purchases: key = jsmith     value = gift card
+Produced event to topic purchases: key = jsmith     value = alarm clock
+Produced event to topic purchases: key = jsmith     value = t-shirts
+10 messages were produced to topic purchases
+
+5./ consume event at Kafka.Consumer
+nhantathanh@DVCSnake Kafka.Consumer % dotnet run "$(pwd)/../Setup/bootstrapsv_cfg.properties"
+Consumed event from topic purchases: key = jsmith     value = batteries
+Consumed event from topic purchases: key = jsmith     value = alarm clock
+Consumed event from topic purchases: key = htanaka    value = book
+Consumed event from topic purchases: key = sgarcia    value = t-shirts
+Consumed event from topic purchases: key = jsmith     value = t-shirts
+Consumed event from topic purchases: key = jbernard   value = gift card
+Consumed event from topic purchases: key = awalther   value = batteries
+Consumed event from topic purchases: key = jsmith     value = gift card
+Consumed event from topic purchases: key = jsmith     value = alarm clock
+Consumed event from topic purchases: key = jsmith     value = t-shirts
